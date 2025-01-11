@@ -217,7 +217,7 @@ def start_attack_reply(message, target, port, time):
 # Dictionary to store the last time each user ran the /attack1 command
 bgmi_cooldown = {}
 
-COOLDOWN_TIME =120
+COOLDOWN_TIME =0
 
 # Handler for /attack1 command
 @bot.message_handler(commands=['attack'])
@@ -239,8 +239,8 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
-            if time > 120:
-                response = "Error: Time interval must be less than 360."
+            if time > 180:
+                response = "Error: Time interval must be less than 180."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
@@ -251,7 +251,7 @@ def handle_bgmi(message):
         else:
             response = "Usage :- /attack <target> <port> <time>\nBy NiTZEX @SAYYED_Z"  # Updated command syntax
     else:
-        response = "GROUP ME FREE H, WAHAN USE KR NA"
+        response = "bot band hai"
 
     bot.reply_to(message, response)
 
